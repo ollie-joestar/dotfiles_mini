@@ -9,15 +9,16 @@ mkdir -p "$XDG_CONFIG_HOME"
 
 # Install Homebrew
 if ! command -v brew &> /dev/null; then
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-	echo >> "$HOME/.bashrc"
-	echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> "$HOME/.bashrc"
-	source "$HOME/.bashrc"
+    NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    echo >> "$HOME/.bashrc"
+    echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> "$HOME/.bashrc"
+    source "$HOME/.bashrc"
 fi
 
 # Install Homebrew packages
 packages=(
 	node
+	neovim
 )
 
 for package in "${packages[@]}"; do
