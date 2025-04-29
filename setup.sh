@@ -1,6 +1,6 @@
 #!/bin/bash
-set -e
 
+# Clone the dotfiles repository
 git clone https://github.com/ollie-joestar/dotfiles_mini.git "$HOME/dotfiles_mini"
 cd $HOME/dotfiles_mini
 
@@ -10,18 +10,14 @@ mkdir -p "$XDG_CONFIG_HOME"
 # Install Homebrew
 if ! command -v brew &> /dev/null; then
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-	echo >> /root/.bashrc
-	echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> /root/.bashrc
-	source /root/.bashrc
+	echo >> "$HOME/.bashrc"
+	echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> "$HOME/.bashrc"
+	source "$HOME/.bashrc"
 fi
 
 # Install Homebrew packages
 packages=(
-	tmux
-	ripgrep
 	node
-	fzf
-	neovim
 )
 
 for package in "${packages[@]}"; do
@@ -34,8 +30,8 @@ ln -sf "$PWD/.tmux.conf" "$HOME/.tmux.conf"
 ln -sf "$PWD/.tmux" "$HOME/.tmux"
 ln -sf "$PWD/.zshrc" "$HOME/.zshrc"
 ln -sf "$PWD/.bashrc" "$HOME/.bashrc"
-echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> /root/.bashrc
-source /root/.bashrc
+echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> "$HOME/.bashrc"
+source "$HOME/.bashrc"
 
 # Backup and clone nvim configuration
 if [ -d "$XDG_CONFIG_HOME/nvim" ]; then

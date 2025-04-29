@@ -59,8 +59,6 @@ alias gps='git push'
 alias gst='git status'
 
 export PATH=$HOME/.brew/bin:$PATH
-export PATH=$HOME/.cargo/bin:$PATH
-export PATH="$HOME/.local/kitty.app/bin:$PATH"
 export PATH="$HOME/Library/Python/3.9/bin/:$PATH"
 export EDITOR=nvim
 
