@@ -4,4 +4,3 @@ if [[ "$(uname)" == "Darwin" ]]; then
 fi
 
 export TERM=xterm-256color
-. "$HOME/.cargo/env"

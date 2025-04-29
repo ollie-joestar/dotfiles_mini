@@ -1,4 +1,8 @@
 #!/bin/bash
+set -e
+
+git clone https://github.com/ollie-joestar/dotfiles_mini.git "$HOME/dotfiles_mini"
+cd $HOME/dotfiles_mini
 
 export XDG_CONFIG_HOME="$HOME/.config"
 mkdir -p "$XDG_CONFIG_HOME"
@@ -30,7 +34,8 @@ ln -sf "$PWD/.tmux.conf" "$HOME/.tmux.conf"
 ln -sf "$PWD/.tmux" "$HOME/.tmux"
 ln -sf "$PWD/.zshrc" "$HOME/.zshrc"
 ln -sf "$PWD/.bashrc" "$HOME/.bashrc"
-ln -sf "$PWD/.zshenv" "$HOME/.zshenv"
+echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> /root/.bashrc
+source /root/.bashrc
 
 # Backup and clone nvim configuration
 if [ -d "$XDG_CONFIG_HOME/nvim" ]; then
@@ -48,3 +53,4 @@ fi
 
 # Message to indicate completion
 echo "Setup complete. Configuration files have been symlinked and packages installed."
+exec zsh
