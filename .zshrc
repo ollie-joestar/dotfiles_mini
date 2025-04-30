@@ -57,6 +57,7 @@ alias gco='git checkout'
 alias gp='git pull'
 alias gps='git push'
 alias gst='git status'
+alias clone_mlx='git clone https://github.com/42Paris/minilibx-linux minilibx_linux'
 
 export PATH=$HOME/.brew/bin:$PATH
 export PATH="$HOME/Library/Python/3.9/bin/:$PATH"
